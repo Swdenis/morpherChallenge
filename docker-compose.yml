@@ -1,0 +1,35 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+            POSTGRES_PASSWORD: secret
+            
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    ports:
+      - '3000:3000'
+    restart: on-failure
+    container_name: client
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    ports:
+      - '5000:5000'
+    restart: on-failure
+    container_name: server
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+    environment:
+      - PGUSER=admin
+      - PGHOST=localhost
+      - PGDATABASE=numbers
+      - PGPASSWORD=secret
+      - PGPORT=5432
