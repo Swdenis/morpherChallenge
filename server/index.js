@@ -54,15 +54,17 @@ app.post('/number', async (req, res) => {
     console.error(error)
     }
     })
-// app.post('/number/reset', async (req, res) => {
-// try {
-// const number = new User(req.body)
-// await newUser.save()
-// res.json({ user: newUser }) // Returns the new user that is created in the database
-// } catch(error) {
-// console.error(error)
-// }
-// })
+  
+app.post('/number/reset', async (req, res) => {
+  try {
+    let currentValue = await Number.findByPk(1)
+    currentValue.value = 0
+    currentValue.save()
+    res.json({ number: currentValue }) // Returns the new number that is created in the database
+    } catch(error) {
+    console.error(error)
+    }
+    })
 
 app.get('/number', async (req, res) => {
 try {
