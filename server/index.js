@@ -23,7 +23,6 @@ const createQuery = "CREATE DATABASE number WITH  OWNER = admin ENCODING = 'UTF8
 //     .catch(err => console.log("error creating DB", err))
 
 const Number = sequelize.define("number", {
-// attributes
 value: {
 type: Sequelize.INTEGER,
 defaultValue: 0
@@ -33,11 +32,9 @@ timestamps: false,
 tableName: "number"
 });
 
-// Note: using `force: true` will drop the table if it already exists
 
 (async ()=>{
     await Number.sync({force: true});
-    // Table created
     await Number.create({
       value: 0
     });
@@ -50,7 +47,7 @@ app.post('/number', async (req, res) => {
     let currentValue = await Number.findByPk(1)
     const incrementResult = await currentValue.increment('value');
     incrementResult.save()
-    res.json({ number: incrementResult }) // Returns the new number that is created in the database
+    res.json({ number: incrementResult })
     } catch(error) {
     console.error(error)
     }
@@ -61,7 +58,7 @@ app.post('/number/reset', async (req, res) => {
     let currentValue = await Number.findByPk(1)
     currentValue.value = 0
     currentValue.save()
-    res.json({ number: currentValue }) // Returns the new number that is created in the database
+    res.json({ number: currentValue })
     } catch(error) {
     console.error(error)
     }
