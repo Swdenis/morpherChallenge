@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Header, Segment } from 'semantic-ui-react'
-import numbers from '../api/numbers'
+import { Button, Container, Header } from 'semantic-ui-react'
 import { getCurrentNumber, handleIncrement, handleReset } from './requestHandlers'
 
 export default function Home() {
