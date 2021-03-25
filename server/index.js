@@ -1,9 +1,10 @@
 const express = require('express')
 const Sequelize = require('sequelize')
 const app = express()
-const port = 3002
-app.use(express.json());
-
+const port = process.env.PORT || 5000;
+var cors = require('cors')
+app.use(express.json())
+app.use(cors())
 const sequelize = new Sequelize('postgres://admin:secret@localhost:5432/number')
 
 sequelize

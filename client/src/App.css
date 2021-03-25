@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.challengeHeader {
+    font-size: 4em !important ;
+    font-weight: normal !important ;
+    margin-bottom: 0 !important ;
+    margin-top: 3em !important ;
+    white-space: nowrap !important 
+}
+
+.currentNumber {
+    font-size: 1.5em !important;
+    font-weight: normal !important;
+    margin-top: 2em !important
+}
