@@ -10,7 +10,7 @@ const createQuery = "CREATE DATABASE IF NOT EXISTS number WITH  OWNER = admin EN
 
 app.use(express.json())
 app.use(cors())
-let sequelize = new Sequelize('postgres://postgres:secret@postgres:5432/postgres')
+let sequelize = new Sequelize(process.env.DATABASE_URL)
 
 sequelize
 .authenticate()
