@@ -8,7 +8,8 @@
     "docker:down": "docker-compose -p morpherChallenge down",
     "docker:up": "docker-compose -p morpherChallenge up",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm install && cd client && npm install --only-dev && npm install && npm run build"
+    "heroku-postbuild": "npm install && cd client && npm install --only-dev && npm install && npm run build",
+    "start": "node server/src/index.js"
     
   },
   "repository": {
