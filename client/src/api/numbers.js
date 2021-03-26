@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const baseURL = "http://localhost:5000"
+const port = '5000'
 
 export default axios.create({
-    baseURL: baseURL
+    baseURL: 'http://localhost:'+port
 })
