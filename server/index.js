@@ -6,7 +6,7 @@ var cors = require('cors')
 app.use(express.json())
 app.use(cors())
 
-const sequelize = new Sequelize('postgres://admin:secret@localhost:5432/number')
+const sequelize = new Sequelize('postgres://postgres:secret@localhost:5432/number')
 
 sequelize
 .authenticate()
