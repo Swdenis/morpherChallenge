@@ -1,16 +1,15 @@
 const express = require('express')
 const Sequelize = require('sequelize')
-require('dotenv').config();
 const app = express()
 const port = process.env.PORT || 5000;
-const http = require('http');
-var cors = require('cors');
-
-const createQuery = "CREATE DATABASE IF NOT EXISTS number WITH  OWNER = admin ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;"
-
+var cors = require('cors')
 app.use(express.json())
 app.use(cors())
+<<<<<<< HEAD:server/src/index.js
 let sequelize = new Sequelize(process.env.DATABASE_URL)
+=======
+const sequelize = new Sequelize('postgres://admin:secret@localhost:5432/number')
+>>>>>>> parent of 69ea131... Added docker containerization:server/index.js
 
 sequelize
 .authenticate()
@@ -21,9 +20,11 @@ console.log('Connection has been established successfully.');
 console.error('Unable to connect to the database:', err);
 });
 
-sequelize.query(createQuery)
-    .then(() => console.log("DB created"))
-    .catch(err => console.log("error creating DB", err))
+const createQuery = "CREATE DATABASE number WITH  OWNER = admin ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;"
+
+// sequelize.query(createQuery)
+//     .then(() => console.log("DB created"))
+//     .catch(err => console.log("error creating DB", err))
 
 const Number = sequelize.define("number", {
 value: {
@@ -76,5 +77,4 @@ console.error(error)
 }
 })
 
-const server = http.createServer(app);
-server.listen(port, () => console.log(`App listening on port ${port}!`))
+app.listen(port, () => console.log(`App listening on port ${port}!`))

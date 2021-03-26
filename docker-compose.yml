@@ -6,6 +6,8 @@ services:
             POSTGRES_PASSWORD: secret
             
   client:
+    depends_on:
+      - postgres
     build:
       context: ./client
       dockerfile: Dockerfile.dev
