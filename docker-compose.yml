@@ -17,6 +17,8 @@ services:
     restart: on-failure
     container_name: client
   server:
+    depens_on:
+      - postgres
     build:
       context: ./server
       dockerfile: Dockerfile.dev
